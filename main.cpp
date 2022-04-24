@@ -65,7 +65,7 @@ std::string get_res(char *buf, std::string& directory)
     }
     else
     {
-        std::fstream f(filename, std::fstream::in);
+        std::fstream f(filename);
         std::string res;
         while(!f.eof())
         {
