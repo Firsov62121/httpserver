@@ -14,6 +14,7 @@
 #include <arpa/inet.h>
 #include <signal.h>
 #include <syslog.h>
+#include <pthread.h>
 
 inline bool exists_file (const std::string& name) {
     return ( access( name.c_str(), F_OK ) != -1 );
@@ -142,8 +143,18 @@ static void skeleton_daemon()
     openlog ("firstdaemon", LOG_PID, LOG_DAEMON);
 }
 
+void * func(void * val)
+{
+    while(true);
+}
+
 int main(int argc, char **argv) {
     std::cout << getpid() << std::endl;
+    pthread_t thread_id;
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
+    int arg = 5;
+    pthread_create(&thread_id, &attr, func, &arg);
     skeleton_daemon();
     char c;
     std::string host = "127.0.0.1", directory = "";
@@ -219,6 +230,8 @@ int main(int argc, char **argv) {
             }
         }
     }
+    int * val; 
+    pthread_join(thread_id, (void**)&val);
     return 0;
 }
 
