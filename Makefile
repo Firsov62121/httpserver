@@ -78,17 +78,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/mikhail/Документы/parallel/final test/CMakeFiles" "/home/mikhail/Документы/parallel/final test/CMakeFiles/progress.marks"
@@ -121,46 +110,6 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named final
-
-# Build rule for target.
-final: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 final
-.PHONY : final
-
-# fast build rule for target.
-final/fast:
-	$(MAKE) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/build
-.PHONY : final/fast
-
-main.o: main.cpp.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/main.cpp.s
-.PHONY : main.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -169,11 +118,6 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... final"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 .PHONY : help
 
 
