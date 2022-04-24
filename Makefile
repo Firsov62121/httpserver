@@ -122,17 +122,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named final2
+# Target rules for targets named final
 
 # Build rule for target.
-final2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 final2
-.PHONY : final2
+final: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 final
+.PHONY : final
 
 # fast build rule for target.
-final2/fast:
-	$(MAKE) -f CMakeFiles/final2.dir/build.make CMakeFiles/final2.dir/build
-.PHONY : final2/fast
+final/fast:
+	$(MAKE) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/build
+.PHONY : final/fast
 
 main.o: main.cpp.o
 
@@ -140,7 +140,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/final2.dir/build.make CMakeFiles/final2.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -149,7 +149,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/final2.dir/build.make CMakeFiles/final2.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -158,7 +158,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/final2.dir/build.make CMakeFiles/final2.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/final.dir/build.make CMakeFiles/final.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -170,7 +170,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... final2"
+	@echo "... final"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
