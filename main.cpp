@@ -54,9 +54,18 @@ std::string get_file_name(char *buf)
     return s.substr(pos + 1, pos2 - pos - 1);
 }
 
+std::string del_quest(std::string s)
+{
+    size_t pos = s.find_first_of('?');
+    if(pos == std::string::npos)
+        return s;
+    else
+        return s.substr(0, pos);
+}
+
 std::string get_res(char *buf, std::string& directory)
 {
-    std::string filename = directory + get_file_name(buf);
+    std::string filename = directory + del_quest(get_file_name(buf));
     //std::cout << filename << std::endl;
     bool nofile = !exists_file(filename);
     if(nofile)
@@ -137,7 +146,7 @@ int main(int argc, char **argv) {
     std::cout << getpid() << std::endl;
     skeleton_daemon();
     char c;
-    std::string host = "127.0.0.1", directory = "./";
+    std::string host = "127.0.0.1", directory = "";
     int port = 12345;
     for(uint i = 1; i < argc; ++i)
     {
