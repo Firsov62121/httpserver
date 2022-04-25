@@ -225,7 +225,7 @@ int main(int argc, char **argv) {
                     //std::cout << "get smt\n";
                     std::string res = get_res(buf, directory);
                     //std::cout << res << std::endl;
-                    send(events[i].data.fd, res.c_str(), res.size() - 1, MSG_NOSIGNAL);
+                    send(events[i].data.fd, res.c_str(), res.size(), MSG_NOSIGNAL);
                     shutdown(events[i].data.fd, SHUT_RDWR);
                     close(events[i].data.fd);
                 }

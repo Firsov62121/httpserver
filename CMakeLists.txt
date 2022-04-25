@@ -9,4 +9,4 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(CMAKE_CXX_FLAGS " -std=c++11 -pthread")
-add_executable(final main2.cpp)
+add_executable(final main.cpp)
