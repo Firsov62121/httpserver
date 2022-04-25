@@ -71,7 +71,7 @@ std::string get_res(char *buf, std::string& directory)
     bool nofile = !exists_file(filename);
     if(nofile)
     {
-        return "HTTP/1.0 404 NOT FOUND\r\nContent-Type: text/html\r\n\r\n";
+        return "HTTP/1.0 404 NOT FOUND\r\nContent-Type: text/html\r\n\r\n\0";
     }
     else
     {
@@ -225,7 +225,9 @@ int main(int argc, char **argv) {
                     //std::cout << "get smt\n";
                     std::string res = get_res(buf, directory);
                     //std::cout << res << std::endl;
-                    send(events[i].data.fd, res.c_str(), res.size(), MSG_NOSIGNAL);
+                    send(events[i].data.fd, res.c_str(), res.size() - 1, MSG_NOSIGNAL);
+                    shutdown(events[i].data.fd, SHUT_RDWR);
+                    close(events[i].data.fd);
                 }
             }
         }
