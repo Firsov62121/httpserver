@@ -71,7 +71,7 @@ std::string get_res(char *buf, std::string& directory)
     bool nofile = !exists_file(filename);
     if(nofile)
     {
-        return "HTTP/1.0 404 NOT FOUND\r\nContent-Type: text/html\r\n\r\n\0";
+        return "HTTP/1.0 404 NOT FOUND\r\nContent-Type: text/html\r\n\r\n";
     }
     else
     {
