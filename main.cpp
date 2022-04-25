@@ -84,7 +84,7 @@ std::string get_res(char *buf, std::string& directory)
         f.close();
         return "HTTP/1.0 200 OK\r\n"
         "Content-Type: text/html\r\n"
-        "\r\n" + res;
+        "\r\n" + res.substr(0, res.size() - 1);
     }
 }
 
