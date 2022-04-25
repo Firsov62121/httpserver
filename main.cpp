@@ -15,6 +15,7 @@
 #include <signal.h>
 #include <syslog.h>
 #include <pthread.h>
+#include <stdlib.h>
 
 inline bool exists_file (const std::string& name) {
     return ( access( name.c_str(), F_OK ) != -1 );
@@ -153,10 +154,9 @@ int main(int argc, char **argv) {
     pthread_attr_init(&attr);
     int arg = 5;
     pthread_create(&thread_id, &attr, func, &arg);
-    skeleton_daemon();
-    char c;
     std::string host = "127.0.0.1", directory = "";
     int port = 12345;
+    char opt;
     for(uint i = 1; i < argc; ++i)
     {
         if(!strcmp(argv[i], "-p"))
@@ -175,7 +175,9 @@ int main(int argc, char **argv) {
             ++i;
         }
     }
-
+    while ((opt = getopt(argc, argv, "phd:")) != -1) {
+    }
+    skeleton_daemon();
     int masterSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     
     struct sockaddr_in sockAddr;
