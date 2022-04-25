@@ -83,8 +83,6 @@ std::string get_res(char *buf, std::string& directory)
         }
         f.close();
         return "HTTP/1.0 200 OK\r\n"
-        "Content-length: " + std::to_string(res.size()) + "\r\n"
-        "Connection: close\r\n"
         "Content-Type: text/html\r\n"
         "\r\n" + res;
     }
